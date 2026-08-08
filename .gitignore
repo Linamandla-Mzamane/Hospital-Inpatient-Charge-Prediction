@@ -1,0 +1,20 @@
+# byte-compiled files
+__pycache__/
+
+# enviroments
+.venv/
+
+# IDE
+.idea/
+
+# data
+data/raw/*
+
+# trained models
+models/*.pkl
+
+# notebook checkpoints
+*.ipynb_checkpoints/
+
+# packaging artifacts from an editable install
+*.egg-info/
