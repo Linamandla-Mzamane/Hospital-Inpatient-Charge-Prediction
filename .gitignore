@@ -18,6 +18,3 @@ models/*.pkl
 
 # packaging artifacts from an editable install
 *.egg-info/
-
-# license
-LICENSE.txt/
