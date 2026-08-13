@@ -9,6 +9,7 @@ __pycache__/
 
 # data
 data/raw/*
+data/processed/*
 
 # trained models
 models/*.pkl
@@ -18,3 +19,7 @@ models/*.pkl
 
 # packaging artifacts from an editable install
 *.egg-info/
+
+# AI-agent
+*.claude/
+CLAUDE.md

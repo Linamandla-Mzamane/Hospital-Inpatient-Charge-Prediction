@@ -15,8 +15,15 @@ authoritative spec for what to build:
 ## What this project is
 
 A portfolio data-science project: build a multiple linear regression model that predicts what a
-hospital charges for an inpatient procedure (DRG), using real CMS billing data. The deliverable is a
-single Jupyter notebook, **`hospital_charges_prediction.ipynb`**.
+hospital charges for an inpatient procedure (DRG), using real CMS billing data. The deliverable is
+split across two Jupyter notebooks:
+
+- **`notebooks/hospital_charges_eda.ipynb`** — load, clean, and explore the data (steps 1-5 below).
+  Its last step writes the cleaned DataFrame out to `data/processed/cleanedInpatientCharges.csv`
+  (path defined as `CLEANED_DATA_FILE` in `config.py`).
+- **`notebooks/hospital_charges_prediction.ipynb`** — reads that processed CSV and covers encoding
+  through modelling and the final write-up (steps 6-15 below). It does not re-run the raw
+  load/clean/drop steps itself.
 
 **Dataset**: "Hospital Charges for Inpatients" (CMS data via Kaggle,
 `kaggle.com/datasets/speedoheck/inpatient-hospital-charges`), ~163k rows, one row per
@@ -27,6 +34,8 @@ currency strings (e.g. `"$32,963.07"`) and must be cleaned to floats.
 
 ### Required notebook flow (in order)
 
+Steps 1-5 belong in `hospital_charges_eda.ipynb`, steps 6-15 in `hospital_charges_prediction.ipynb`.
+
 1. Load CSV, inspect shape/dtypes, strip whitespace from column names.
 2. Clean currency columns (`Average Covered Charges`, `Average Total Payments`,
    `Average Medicare Payments`) → strip `$`/commas, cast to float.
@@ -34,7 +43,10 @@ currency strings (e.g. `"$32,963.07"`) and must be cleaned to floats.
    `Provider Street Address`, `Provider Zip Code`. Keep `Provider State` and `DRG Definition` as
    categorical predictors.
 4. EDA: distribution of `Average Covered Charges`; charges by top 10-15 DRG categories and by state.
-5. Handle missing values / duplicates, with reasoning documented in a markdown cell.
+5. Handle missing values / duplicates, with reasoning documented in a markdown cell. Finish by
+   writing the cleaned/trimmed DataFrame to `data/processed/cleanedInpatientCharges.csv` — this is
+   the handoff point to the modelling notebook, which reads this file as its first step instead of
+   repeating steps 1-3.
 6. One-hot encode `Provider State`; for `DRG Definition` either one-hot encode directly or bucket
    rare categories into `"Other"` first (explain the choice in markdown).
 7. Build `X` (Total Discharges + encoded categoricals) and `y` (`Average Covered Charges`). **Do not**
@@ -66,6 +78,7 @@ ML portfolio projects — follow it when scaffolding files rather than putting s
 │   ├── raw/            # original CSV, untouched — treat read-only
 │   └── processed/      # cleaned data produced by code in src/
 ├── notebooks/
+│   ├── hospital_charges_eda.ipynb
 │   └── hospital_charges_prediction.ipynb
 ├── src/insurance_charges_prediction/
 │   ├── __init__.py
