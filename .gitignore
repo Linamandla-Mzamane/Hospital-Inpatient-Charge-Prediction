@@ -23,3 +23,6 @@ models/*.pkl
 # AI-agent
 *.claude/
 CLAUDE.md
+
+# reference docs, not part of the deliverable
+ml_project_setup_playbook.pdf
