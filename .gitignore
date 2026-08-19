@@ -11,9 +11,6 @@ __pycache__/
 data/raw/*
 data/processed/*
 
-# trained models
-models/*.pkl
-
 # notebook checkpoints
 *.ipynb_checkpoints/
 

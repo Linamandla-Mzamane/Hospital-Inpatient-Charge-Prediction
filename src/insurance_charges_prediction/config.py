@@ -21,6 +21,5 @@ RAW_DATA_FILE = RAW_DATA_DIR / "inpatientCharges.csv"
 CLEANED_DATA_FILE = PROCESSED_DATA_DIR / "cleanedInpatientCharges.csv"
 
 # Constant variable for model instantiation
-TARGET_VAR = "Average Covered Charges"
 RANDOM_STATE = 4
 TEST_SIZE = 0.2

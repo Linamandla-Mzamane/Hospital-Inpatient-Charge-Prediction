@@ -4,9 +4,10 @@ from sklearn.preprocessing import OneHotEncoder
 
 # Function for encoding categorical variables in dataset.
 def encode_categoricals(df, cols=("Provider State", "DRG Definition")) -> pd.DataFrame:
+    cols = list(cols)
     encoder = OneHotEncoder(drop="first", sparse_output=False, handle_unknown="ignore")
-    encoded_array = encoder.fit_transform(df[["Provider State", "DRG Definition"]])
-    encoded_cols = encoder.get_feature_names_out(["Provider State", "DRG Definition"])
+    encoded_array = encoder.fit_transform(df[cols])
+    encoded_cols = encoder.get_feature_names_out(cols)
     encoded_df = pd.DataFrame(encoded_array, columns=encoded_cols, index=df.index)
     return encoded_df
 
