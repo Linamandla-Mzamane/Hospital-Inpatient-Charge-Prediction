@@ -3,7 +3,7 @@
 A data-science portfolio project that models what U.S. hospitals charge for inpatient
 procedures, using real CMS billing data. Covers the full pipeline: cleaning, exploratory
 analysis, multiple linear regression, coefficient interpretation, a business-facing markup
-metric, an alternate target, and a regularization comparison (Ridge/Lasso vs. OLS).
+metric, an alternate target, and a regularization comparison (Ridge/Lasso vs. OLS)..
 
 ## Dataset
 
